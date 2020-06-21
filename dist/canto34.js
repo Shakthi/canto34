@@ -245,6 +245,7 @@
 
 						remaining = remaining.substring(consumed.length);
 						tracker.consume(consumed);
+						break; //This break is needed as we need to start matching from top of tokenType list
 					}
 
 					if (!somethingFoundThisPass) {
@@ -397,6 +398,9 @@
 						var pos = 1;
 						var ch;
 						var finished = false;
+						if (remaining.slice(pos).indexOf('"') === -1) {
+							return fail;
+						}
 						do {
 							ch = remaining[pos];
 							pos += 1;

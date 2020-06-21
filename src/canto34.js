@@ -279,6 +279,9 @@ class StandardTokenTypes {
 				var pos = 1;
 				var ch;
 				var finished = false;
+				if (remaining.slice(pos).indexOf('"') === -1) {
+					return fail;
+				}
 				do {
 					ch = remaining[pos];
 					pos += 1;
